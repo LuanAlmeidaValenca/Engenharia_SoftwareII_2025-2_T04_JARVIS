@@ -51,7 +51,9 @@ def analisar_padrao_arquitetural(base_path):
         "arquitetura MVC",
         "arquitetura de microserviços",
         "arquitetura orientada a eventos",
-        "arquitetura Pipe-and-Filter"
+        "arquitetura Pipe-and-Filter",
+        "arquitetura orquestrador-executor",
+        "arquitetura multi-agente",
     ]
 
     # Executa análise

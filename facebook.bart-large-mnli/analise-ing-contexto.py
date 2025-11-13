@@ -57,6 +57,20 @@ def contexto_arquiteturas():
         - Components communicate through events.
         - Promotes loose coupling and real-time responsiveness.
         - Used in message brokers and reactive systems.
+
+        6. Monolithic Architecture:
+        - Single unified codebase for the entire application.
+        - Easier to develop and deploy initially.
+        - Can lead to scalability and maintainability challenges as the system grows.
+
+        7. Orchestrator-Executor Architecture:
+        - Separates decision-making (orchestrator) from task execution (executor).
+        - Common in workflow management and automation systems.
+
+        8. Multi-Agent Architecture:
+        - System composed of autonomous agents that interact.
+        - Promotes distributed problem-solving and adaptability.
+        - Used in simulations, robotics, and AI systems.
     """
 
 def analyze_architecture(base_path):
@@ -82,7 +96,9 @@ def analyze_architecture(base_path):
         "Microservices Architecture",
         "Pipe-and-Filter Architecture",
         "Event-Driven Architecture",
-        "Monolithic Architecture"
+        "Monolithic Architecture",
+        "Orchestrator-Executor Architecture",
+        "Multi-Agent Architecture"
     ]
 
     print("Analisando estrutura do projeto...")

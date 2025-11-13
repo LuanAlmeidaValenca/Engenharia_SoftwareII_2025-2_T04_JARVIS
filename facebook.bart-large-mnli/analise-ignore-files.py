@@ -54,7 +54,9 @@ def analisar_padrao_arquitetural(base_path):
         "MVC architecture",
         "microservices architecture",
         "event-driven architecture",
-        "pipe-and-filter architecture"
+        "pipe-and-filter architecture",
+        "orchestrator-executor architecture",
+        "multi-agent architecture"
     ]
 
     # Executa análise
