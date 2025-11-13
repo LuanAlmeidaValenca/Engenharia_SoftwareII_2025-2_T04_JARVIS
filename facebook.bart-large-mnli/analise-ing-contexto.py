@@ -112,7 +112,7 @@ def analyze_architecture(base_path):
     return resultado
 
 if __name__ == "__main__":
-    path = r"C:\Workspace\Senac-PSG"
+    path = r"C:\Workspace\JARVIS"
     if not os.path.isdir(path):
         print("Caminho inválido. Verifique e tente novamente.")
     else:
