@@ -73,7 +73,7 @@ def contexto_arquiteturas():
         - Used in simulations, robotics, and AI systems.
     """
 
-def analyze_architecture(base_path):
+def analisar_padrao_arquitetural(base_path):
     # Collect structure
     estrutura_texto, total = coletar_estrutura_projeto(base_path)
     print(f"\n✅ Estrutura coletada: {total} entradas")
@@ -116,4 +116,4 @@ if __name__ == "__main__":
     if not os.path.isdir(path):
         print("Caminho inválido. Verifique e tente novamente.")
     else:
-        analyze_architecture(path)
+        analisar_padrao_arquitetural(path)
