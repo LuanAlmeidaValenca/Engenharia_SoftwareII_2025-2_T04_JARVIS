@@ -1,119 +1,51 @@
 import os
 from transformers import pipeline
+from facebook_bart_large_mnli.utils.main import Utils
 
-def coletar_estrutura_projeto(base_path, max_entries=None):
-    """
-    Percorre recursivamente o projeto e retorna uma string com a estrutura de arquivos e pastas.
-    Exemplo:
-    src/
-      controller/
-        main_controller.py
-      model/
-        user_model.py
-    public/
-      index.html
-    """
-    base_path = os.path.abspath(base_path)
-    estrutura = []
-    for root, dirs, files in os.walk(base_path):
-        rel_path = os.path.relpath(root, base_path)
-        if rel_path == ".":
-            rel_path = os.path.basename(base_path)
-        estrutura.append(rel_path.replace("\\", "/") + "/")
-        for f in files:
-            estrutura.append(f"  {rel_path.replace('\\', '/')}/{f}")
-        if max_entries and len(estrutura) > max_entries:
-            estrutura.append("  ... (estrutura truncada)")
-            break
+class FacebookIngContexto:
+    def __init__(self, caminho):
+        self.caminho = caminho
 
-    texto_estrutura = "\n".join(estrutura)
-    return texto_estrutura, len(estrutura)
+    def analisar_padrao_arquitetural(self):
+        # Collect structure
+        estrutura_texto, total = Utils.coletar_estrutura_projeto(self.caminho)
+        print(f"\n✅ Estrutura coletada: {total} entradas")
+        print("--------------------------------------------------")
+        print("\n".join(estrutura_texto.splitlines()[:30]))  # mostra início da estrutura
+        print("...\n--------------------------------------------------")
 
-def contexto_arquiteturas():
-    return """
-        Software Architectural Patterns Overview:
+        # Combine structure + architecture descriptions
+        context = Utils.contexto_arquiteturas()
+        full_text = context + "\n\n--- Project Structure ---\n" + estrutura_texto
 
-        1. Layered Architecture (Layers):
-        - Organizes the system into layers (e.g., presentation, business, data).
-        - Each layer has a specific responsibility.
-        - Promotes maintainability, modularity, and separation of concerns.
+        # Initialize the zero-shot classifier
+        print("Carregando modelo do Hugging Face...")
+        classifier = pipeline("zero-shot-classification", model="facebook/bart-large-mnli")
 
-        2. Model-View-Controller (MVC):
-        - Divides the system into Model (data), View (user interface), and Controller (logic).
-        - Common in web frameworks like Laravel, Django, and Spring.
-        - Encourages clear separation between business logic and UI.
+        # Candidate architectural styles (labels)
+        labels = [
+            "Layered Architecture",
+            "Model-View-Controller (MVC)",
+            "Microservices Architecture",
+            "Pipe-and-Filter Architecture",
+            "Event-Driven Architecture",
+            "Monolithic Architecture",
+            "Orchestrator-Executor Architecture",
+            "Multi-Agent Architecture"
+        ]
 
-        3. Microservices Architecture:
-        - System composed of independent services communicating through APIs.
-        - Promotes scalability, fault isolation, and technology diversity.
-        - Common in cloud-native applications (e.g., Netflix, Uber).
+        print("Analisando estrutura do projeto...")
+        resultado = classifier(full_text, candidate_labels=labels)
 
-        4. Pipe-and-Filter Architecture:
-        - Data flows through a series of filters connected by pipes.
-        - Each filter transforms data and passes it along.
-        - Common in data processing and streaming pipelines.
+        print("\resultado da Classificação:")
+        for label, score in zip(resultado["labels"], resultado["scores"]):
+            print(f"  {label}: {score:.3f}")
 
-        5. Event-Driven Architecture:
-        - Components communicate through events.
-        - Promotes loose coupling and real-time responsiveness.
-        - Used in message brokers and reactive systems.
+        print(f"\nArquitetura mais provável: {resultado['labels'][0].upper()}")
+        return resultado
 
-        6. Monolithic Architecture:
-        - Single unified codebase for the entire application.
-        - Easier to develop and deploy initially.
-        - Can lead to scalability and maintainability challenges as the system grows.
-
-        7. Orchestrator-Executor Architecture:
-        - Separates decision-making (orchestrator) from task execution (executor).
-        - Common in workflow management and automation systems.
-
-        8. Multi-Agent Architecture:
-        - System composed of autonomous agents that interact.
-        - Promotes distributed problem-solving and adaptability.
-        - Used in simulations, robotics, and AI systems.
-    """
-
-def analisar_padrao_arquitetural(base_path):
-    # Collect structure
-    estrutura_texto, total = coletar_estrutura_projeto(base_path)
-    print(f"\n✅ Estrutura coletada: {total} entradas")
-    print("--------------------------------------------------")
-    print("\n".join(estrutura_texto.splitlines()[:30]))  # mostra início da estrutura
-    print("...\n--------------------------------------------------")
-
-    # Combine structure + architecture descriptions
-    context = contexto_arquiteturas()
-    full_text = context + "\n\n--- Project Structure ---\n" + estrutura_texto
-
-    # Initialize the zero-shot classifier
-    print("Carregando modelo do Hugging Face...")
-    classifier = pipeline("zero-shot-classification", model="facebook/bart-large-mnli")
-
-    # Candidate architectural styles (labels)
-    labels = [
-        "Layered Architecture",
-        "Model-View-Controller (MVC)",
-        "Microservices Architecture",
-        "Pipe-and-Filter Architecture",
-        "Event-Driven Architecture",
-        "Monolithic Architecture",
-        "Orchestrator-Executor Architecture",
-        "Multi-Agent Architecture"
-    ]
-
-    print("Analisando estrutura do projeto...")
-    resultado = classifier(full_text, candidate_labels=labels)
-
-    print("\resultado da Classificação:")
-    for label, score in zip(resultado["labels"], resultado["scores"]):
-        print(f"  {label}: {score:.3f}")
-
-    print(f"\nArquitetura mais provável: {resultado['labels'][0].upper()}")
-    return resultado
-
-if __name__ == "__main__":
-    path = r"C:\Workspace\JARVIS"
-    if not os.path.isdir(path):
-        print("Caminho inválido. Verifique e tente novamente.")
-    else:
-        analisar_padrao_arquitetural(path)
+    def run(self):
+        if not os.path.isdir(self.caminho):
+            print("Caminho inválido. Verifique e tente novamente.")
+        else:
+            self.analisar_padrao_arquitetural()

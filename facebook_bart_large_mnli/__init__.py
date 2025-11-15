@@ -1,0 +1,5 @@
+from facebook_bart_large_mnli.analise_ptbr import FacebookPtbr
+from facebook_bart_large_mnli.analise_ing import FacebookIng
+from facebook_bart_large_mnli.analise_ing_contexto import FacebookIngContexto
+from facebook_bart_large_mnli.analise_ignore_files import FacebookIgnoreFiles
+from facebook_bart_large_mnli.analise_ing_v2 import FacebookIngV2
