@@ -1,171 +1,194 @@
-# Análise Arquitetural do Microsoft JARVIS com Modelos de Linguagem
+# Projeto de Análise Arquitetural – Microsoft JARVIS / HuggingGPT
 
-Este repositório contém o estudo, implementação e comparação de diferentes técnicas de Inteligência Artificial aplicadas para identificar padrões arquiteturais no projeto **Microsoft JARVIS (HuggingGPT)**.
-Foram utilizados três modelos principais e múltiplas variações de código para avaliar automaticamente a arquitetura a partir da estrutura de diretórios e arquivos do projeto.
+## Universidade Federal de Sergipe – Departamento de Computação
 
----
-
-# Sobre o Projeto JARVIS
-
-O **Microsoft JARVIS/HuggingGPT** é um sistema que integra múltiplos modelos de IA para resolver tarefas complexas.
-Ele funciona como um **Orquestrador-Executor**, onde:
-
-* O **Orquestrador** é um LLM (como GPT-4), responsável por interpretar a solicitação, decompor tarefas, selecionar modelos especializados e integrar os resultados.
-* Os **Executores** são modelos especializados hospedados no Hugging Face, acionados sob demanda via API.
-
-Internamente, o orquestrador segue um **pipeline em quatro estágios**:
-
-1. Task Planning
-2. Model Selection
-3. Task Execution
-4. Response Generation
-
-Esse fluxo confere ao sistema características que lembram:
-
-* Arquitetura Orquestrador-Executor (padrão central)
-* Estilo Pipe-and-Filter no pipeline interno
-* Modularidade semelhante a arquiteturas em camadas e plugins
+- **Disciplina:** Engenharia de Software II
+- **Professor:** Glauco de Figueiredo Carneiro
+- **Data:** 13/11/2025
 
 ---
 
-# Modelos de IA Utilizados na Análise
+# 📌 1. Sobre o Projeto
 
-Três modelos foram aplicados para avaliar o projeto sob perspectivas diferentes, explorando estrutura de diretórios, código-fonte e conteúdo textual.
+Este repositório contém **toda a análise arquitetural** realizada pelo grupo sobre o projeto **Microsoft JARVIS (HuggingGPT)**, incluindo:
 
----
+* Identificação manual da arquitetura
+* Análise automatizada com modelos de linguagem
+* Comparação dos resultados
+* Conclusões finais
+* Estrutura do projeto e como executar nossos scripts
 
-## 1. BART Large MNLI (HuggingFace)
-
-Modelo de zero-shot classification usado para inferir padrões arquiteturais observando **somente os nomes das pastas e arquivos**.
-
-### Objetivo
-
-Identificar qual arquitetura o projeto mais se aproxima com base em texto semântico gerado pela estrutura do repositório.
-
-### Como funciona
-
-1. A estrutura do projeto é percorrida recursivamente.
-2. Os nomes de diretórios e arquivos são convertidos em texto.
-3. O texto é enviado ao modelo BART-MNLI.
-4. O modelo gera probabilidades para cada arquitetura candidata.
-
-### Observações sobre as variações utilizadas
-
-Durante o estudo, o método foi testado em diferentes cenários:
-
-* categorias em português
-* categorias em inglês
-* categorias modernas (como RAG, Federated Learning)
-* versões com contexto adicional sobre cada arquitetura
-* variações que ignoram pastas irrelevantes, como `.git` e `node_modules`
-
-Essas versões serviram apenas para comparar como pequenas mudanças de contexto, idioma e filtragem de arquivos influenciam o comportamento do modelo.
+O objetivo central da atividade foi **avaliar padrões arquiteturais** presentes no JARVIS por meio de investigação manual e com auxílio de modelos de IA.
 
 ---
 
-## 2. UniXcoder-Base (Microsoft)
+# 👥 2. Integrantes e Organização
 
-Modelo transformer voltado para código-fonte, capaz de extrair embeddings semânticos de funções e analisar similaridade estrutural.
+O grupo é composto por:
 
-### Objetivo
+* Arthur Costa Oliveira (202300027104)
+* Davi Lira Santana (202300083319)
+* Gabriel Batista Barbosa (202300027249)
+* João Henrique Britto Bomfim (202300027409)
+* Luan Almeida Valença (202300027866)
+* Matheus Nascimento dos Santos (202300083810)
+* Paulo Henrique Melo Rugani de Sousa (202300027919)
+* Tassio Mateus de Carvalho (202300083963)
 
-Comparar trechos de código para identificar:
+### Estrutura de Trabalho do Grupo
 
-* padrões funcionais
-* similaridade entre módulos
-* organização arquitetural
+O grupo se dividiu em **4 duplas**, cada uma responsável por uma parte da análise:
 
-### Funcionamento
+* **Dupla 1 – Tássio e João:** Identificação manual da arquitetura e documentação.
+* **Dupla 2 – Davi e Paulo:** Análise com *facebook/bart-large-mnli* (classificação zero-shot).
+* **Dupla 3 – Luan e Matheus:** Análise por similaridade de código usando *UniXcoder-base*.
+* **Dupla 4 – Gabriel e Arthur:** Análise com embeddings e clustering via *all-MiniLM-L6-v2*.
 
-1. O código é transformado em vetores (embeddings).
-2. Calcula-se a similaridade de cosseno entre funções.
-3. Similaridades elevadas indicam papéis equivalentes entre módulos.
-4. Os padrões encontrados apontam para um comportamento alinhado a **Arquitetura em Camadas**.
-
----
-
-## 3. MiniLM-L6-v2 (Sentence Transformers)
-
-Modelo eficiente para gerar embeddings textuais, permitindo análises de agrupamento.
-
-### Objetivo
-
-Realizar uma análise arquitetural baseada em:
-
-* embeddings textuais
-* clusterização (KMeans)
-* redução de dimensionalidade (PCA)
-
-### Resultado
-
-Os clusters identificados correspondem a:
-
-* camada de interface
-* lógica de negócio
-* gerenciamento de dados
-* infraestrutura
-* extensões e plugins
-
-Caracterizando uma **Arquitetura em Camadas com Suporte a Plugins**.
+Além disso, todo o grupo discutiu os achados em conjunto em reuniões gerais de alinhamento.
 
 ---
 
-# Como Rodar
+# 🧩 3. Projeto Selecionado – Microsoft JARVIS
 
-## 1. Instale dependências
+O **Microsoft JARVIS / HuggingGPT** é um sistema que integra múltiplos modelos de IA, utilizando um **LLM como orquestrador central**. Ele transforma comandos em linguagem natural em um **pipeline de 4 estágios**:
+
+1. Planejamento de tarefas
+2. Seleção de modelos
+3. Execução das tarefas
+4. Geração da resposta final
+
+O projeto foi escolhido pela sua natureza modular e altamente arquitetural, sendo ideal para esta atividade.
+
+---
+
+# 🏗️ 4. Identificação Manual da Arquitetura
+
+A análise manual concluiu que o JARVIS segue principalmente:
+
+### ✔ **Padrão Controlador–Executor**
+
+Um LLM atua como **controlador inteligente**, e os modelos do Hugging Face como **executores especializados**.
+
+### ✔ **Pipeline de 4 Estágios (Pipe-and-Filter)**
+
+O fluxo da aplicação é rigidamente dividido em:
+
+1. Planejamento
+2. Seleção de modelo
+3. Execução
+4. Geração de resposta
+
+O sistema **não** se encaixa bem em:
+
+* Arquitetura em camadas (violação de chamadas diretas)
+* Arquitetura multi‑agente (executores não possuem autonomia)
+
+Um documento completo com descrições detalhadas está incluído neste repositório.
+
+---
+
+# 🤖 5. Análise com Modelos de Linguagem
+
+O projeto contém **3 frentes de análise automatizada**:
+
+## 🔹 5.1 facebook/bart-large-mnli (classificação zero-shot)
+
+Baseado na estrutura de diretórios. O modelo retornou maior probabilidade para **arquitetura multi-agente**, embora isso não se confirme completamente na análise manual.
+
+O script coletou a estrutura do repositório e classificou entre diversas arquiteturas.
+
+## 🔹 5.2 UniXcoder-base (similaridade de código)
+
+Compara a semântica entre funções diferentes para identificar papéis arquiteturais semelhantes.
+
+## 🔹 5.3 all-MiniLM-L6-v2 (embeddings + clustering)
+
+Clustering identificou grupos coerentes relacionados a etapas funcionais do JARVIS.
+
+---
+
+# 📂 6. Estrutura Deste Repositório
+
+```
+
+ ┣ all_MiniLM_L6_v2
+ ┃ ┣ sentence_transformers.ipynb
+ ┃ ┗ sentence_transformers.py
+ ┣ Analise-Manual
+ ┃ ┣ orquestrador-controlador.py
+ ┃ ┣ pipeline1.py
+ ┃ ┣ pipeline2.py
+ ┃ ┣ pipeline3.py
+ ┃ ┗ pipeline4.py
+ ┣ facebook_bart_large_mnli
+ ┃ ┣ utils/
+ ┃ ┣ __init__
+ ┃ ┣ analise_ignore_files.py
+ ┃ ┣ analise_ing_contexto.py
+ ┃ ┣ analise_ing_v2.py
+ ┃ ┣ analise_ing.py
+ ┃ ┗ analise_ptbr.py
+ ┣ JARVIS
+ ┣ UniXCoder_Base
+ ┃ ┣ __init__.py
+ ┃ ┣ Execução.ipynb
+ ┃ ┗ Execução.py
+ ┣ README.md               # Documentação do projeto
+ ┗ requirements.txt        # Dependências
+```
+
+---
+
+# ▶️ 7. Como Executar o Projeto
+
+Instale as dependências:
 
 ```bash
-pip install transformers sentence-transformers torch numpy scikit-learn matplotlib
+pip install -r requirements.txt
 ```
 
-## 2. Clone o repositório do JARVIS
+Dependências incluem:
+
+* transformers
+* torch
+* sentence-transformers
+* numpy
 
 ```bash
-git clone https://github.com/microsoft/JARVIS
-```
-
-## 3. Ajuste o caminho no código
-
-```python
-caminho = r"C:\Workspace\JARVIS"
-```
-
-## 4. Execute o script desejado
-
-```bash
-python nome_do_script.py
-```
-
-## 5. Para UniXcoder
-
-```python
-codigo_1 = """ ... """
-codigo_2 = """ ... """
-```
-
-## 6. Para MiniLM + Clustering
-
-```bash
-python analisar_clusters.py
+py main.py
 ```
 
 ---
 
-# Conclusão Geral do Trabalho
+# 🧪 7.2. Análise do BART MNLI
 
-A análise manual indica que o JARVIS utiliza predominantemente a arquitetura **Orquestrador-Executor**, organizada internamente como um pipeline **Pipe-and-Filter**.
+Saída: lista de probabilidades por arquitetura.
 
-As análises feitas pelos modelos de IA apresentaram variações naturais:
+---
 
-* O BART alternou entre Multi-Agent, Layered e Event-Driven, dependendo do idioma, categorias e contexto.
-* O UniXcoder identificou padrões robustos de Arquitetura em Camadas.
-* O MiniLM apontou uma estrutura em camadas com componentes plugináveis.
+# 🧪 7.3. Análise Embeddings com UniXcoder
 
-Apesar das diferenças, um padrão recorrente apareceu entre os resultados:
-o modelo frequentemente associou o projeto a conceitos de **arquitetura multi-agente**, devido ao grande número de “executores”. Porém, essa interpretação não reflete a realidade estrutural do sistema.
+O script imprime a similaridade de cosseno entre funções.
 
-Os executores não tomam decisões — apenas respondem quando acionados. Por isso, a classificação correta, após conciliar análise automática e manual, é:
+---
 
-## Arquitetura Orquestrador-Executor com Pipeline Pipe-and-Filter
+# 🧪 7.4. Análise Clustering com all-MiniLM-L6-v2
 
-Esse padrão explica a modularidade, a escalabilidade e a flexibilidade do sistema, além das características semelhantes a camadas e plugins identificadas nas demais abordagens.
+O script gera clusters de significado entre trechos do código.
+
+---
+
+# 📌 8. Conclusão Geral
+
+A combinação das três análises e da investigação manual permitiu concluir que:
+
+### ✔ O Microsoft JARVIS segue primariamente:
+
+* **Arquitetura Controlador–Executor**
+* **Pipeline Pipe-and-Filter com 4 estágios**
+
+### ✔ Outras arquiteturas aparecem superficialmente, mas não definem o sistema.
+
+A modularidade e a dependência centralizada do LLM são elementos marcantes que tornam essa arquitetura eficiente e extensível.
+
+---
