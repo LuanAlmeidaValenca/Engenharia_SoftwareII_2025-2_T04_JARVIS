@@ -10,9 +10,9 @@ Abaixo está o modelo de formatação em **Markdown** para descrever as três m�
 **Local**
 
 ### Especificações
-- **GPU:**
-- **CPU:**
-- **Memória RAM:**
+- **GPU:*NVidia GTX 1050 4GB VRAM*
+- **CPU:*Intel core I5-7300HQ 2.50GHZ*
+- **Memória RAM:*20GB DDR4*
 
 ---
 
