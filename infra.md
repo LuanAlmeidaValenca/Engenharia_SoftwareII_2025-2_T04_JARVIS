@@ -16,18 +16,18 @@ Abaixo está o modelo de formatação em **Markdown** para descrever as três m�
 
 ---
 
-## 🖥️ Máquina 2 — *[Nome do Modelo / Ambiente]*
+## 🖥️ Máquina 2 — *[UniXcoder-Base]*
 
 ### Tipo de Ambiente
 **Nuvem**
 
 ### Serviço na Nuvem
-- **Plataforma / Serviço:**
+- **Plataforma / Serviço: *Google Colab*
 - **Recursos:**
-  - **GPU:**
-  - **VRAM:**
-  - **CPU:**
-  - **Memória RAM:**
+  - **GPU:*NVidia Tesla T4*
+  - **VRAM:*12GB GDDR6*
+  - **CPU:*Intel Xeon*
+  - **Memória RAM:*12GB*
 
 ---
 
@@ -42,6 +42,3 @@ Abaixo está o modelo de formatação em **Markdown** para descrever as três m�
 - **Memória RAM:**
 
 ---
-
-*Preencha os campos acima conforme os detalhes de cada ambiente usado na execução dos modelos de IA.*
-
