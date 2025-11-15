@@ -1,14 +1,9 @@
 import os
 import sys
-from facebook_bart_large_mnli.analise_ptbr import analisar_padrao_arquitetural as fb_ptbr
-from facebook_bart_large_mnli.analise_ing import analisar_padrao_arquitetural as fb_ing
-from facebook_bart_large_mnli.analise_ing_contexto import analisar_padrao_arquitetural as fb_ing_contexto
-from facebook_bart_large_mnli.analise_ignore_files import analisar_padrao_arquitetural as fb_ing_ignore
-from facebook_bart_large_mnli.analise_ing_v2 import analisar_padrao_arquitetural as fb_ing_v2
 
-# ------------------------------------------------------------
-# Funções de escolha de modelo/método
-# ------------------------------------------------------------
+from facebook_bart_large_mnli import FacebookIngV2, FacebookIgnoreFiles, FacebookIng, FacebookIngContexto, FacebookPtbr
+from UniXCoder_Base import UniXCoder
+
 
 def escolher_modelo():
     modelos = {
@@ -36,7 +31,7 @@ def escolher_modo_modelo():
         1: "português sem contexto",
         2: "inglês sem contexto",
         3: "inglês v2 com novas categorias",
-        3: "inglês com contexto",
+        4: "inglês com contexto",
         5: "inglês ignorando arquivos/pastas comuns",
     }
 
@@ -65,15 +60,20 @@ def modelo_bart_large_mnli():
     # Seleção correta de cada módulo
     print("\nExecutando análise...")
     if modo == 1:
-        fb_ptbr(caminho)
+        fb_ptbr = FacebookPtbr(caminho)
+        fb_ptbr.run()
     elif modo == 2:
-        fb_ing(caminho)
+        fb_ing = FacebookIng(caminho)
+        fb_ing.run()
     elif modo == 3:
-        fb_ing_v2(caminho)
+        fb_ing_v2 = FacebookIngV2(caminho)
+        fb_ing_v2.run()
     elif modo == 4:
-        fb_ing_contexto(caminho)
+        fb_ing_contexto = FacebookIngContexto(caminho)
+        fb_ing_contexto.run()
     elif modo == 5:
-        fb_ing_ignore(caminho)
+        fb_ing_ignore = FacebookIgnoreFiles(caminho)
+        fb_ing_ignore.run()
     else:
         print("Modo inválido.")
         sys.exit(1)
@@ -84,16 +84,18 @@ def modelo_bart_large_mnli():
 # ------------------------------------------------------------
 
 def modelo_unixcoder_base():
-    print("⚠ Módulo UniXcoder-Base ainda não implementado.")
+    codigo_1 = input('Digite o primeiro código que deseja comparar: ')
+    codigo_2 = input('Digite o segundo código que deseja comparar: ')
+
+    model = UniXCoder()
+    similaridade = model.run(codigo_1, codigo_2)
+
+    print(f"Similaridade Semântica: {similaridade:.4f}")
 
 
 def modelo_sentence_transformers():
     print("⚠ Módulo Sentence Transformers ainda não implementado.")
 
-
-# ------------------------------------------------------------
-# Direcionador principal
-# ------------------------------------------------------------
 
 def go_to_modelo(escolha: int):
     if escolha == 1:
@@ -106,9 +108,6 @@ def go_to_modelo(escolha: int):
         raise ValueError("Escolha inválida.")
 
 
-# ------------------------------------------------------------
-# Main
-# ------------------------------------------------------------
 if __name__ == "__main__":
     escolha = escolher_modelo()
     go_to_modelo(escolha)
