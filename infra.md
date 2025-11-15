@@ -4,7 +4,7 @@ Abaixo está o modelo de formatação em **Markdown** para descrever as três m�
 
 ---
 
-## 🖥️ Máquina 1 — *[Nome do Modelo / Ambiente]*
+## 🖥️ Máquina 1 — *[facebook/bart-large-mnli]*
 
 ### Tipo de Ambiente
 **Local**
