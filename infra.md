@@ -31,14 +31,17 @@ Abaixo está o modelo de formatação em **Markdown** para descrever as três m�
 
 ---
 
-## 🖥️ Máquina 3 — *[Nome do Modelo / Ambiente]*
+## 🖥️ Máquina 3 — *[all_MiniLM_l6_v2]*
 
 ### Tipo de Ambiente
-**Local**
+**Nuvem**
 
-### Especificações
-- **GPU:**
-- **CPU:**
-- **Memória RAM:**
+### Serviço na Nuvem
+- **Plataforma / Serviço: *Google Colab*
+- **Recursos:**
+  - **GPU:*NVidia Tesla T4*
+  - **VRAM:*12GB GDDR6*
+  - **CPU:*Intel Xeon*
+  - **Memória RAM:*12GB*
 
 ---
