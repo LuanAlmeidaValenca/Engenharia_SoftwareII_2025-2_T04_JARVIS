@@ -1,0 +1,101 @@
+{
+  "metadata": {
+    "projeto": "JARVIS",
+    "data_analise": "2025-11-16 03:17:28",
+    "modelo": "facebook/bart-large-mnli",
+    "metodo": "Zero-Shot Classification",
+    "idioma": "português"
+  },
+  "categorias_analisadas": [
+    "arquitetura monolítica",
+    "arquitetura em camadas",
+    "arquitetura MVC",
+    "arquitetura de microsserviços",
+    "arquitetura orientada a eventos",
+    "arquitetura Pipe-and-Filter",
+    "arquitetura orquestrador-executor",
+    "arquitetura multi-agente"
+  ],
+  "estrutura_projeto": {
+    "total_entradas": 200,
+    "preview": "📁 .git/\n  📄 HEAD\n  📁 branches/\n  📄 config\n  📄 description\n  📁 hooks/\n    📄 applypatch-msg.sample\n    📄 commit-msg.sample\n    📄 fsmonitor-watchman.sample\n    📄 post-update.sample\n    📄 pre-applypatch.sample\n    📄 pre-commit.sample\n    📄 pre-merge-commit.sample\n    📄 pre-push.sample\n    📄 pre-rebase.sample\n    📄 pre-receive.sample\n    📄 prepare-commit-msg.sample\n    📄 push-to-checkout.sample\n    📄 update.sample\n  📄 index\n  📁 info/\n    📄 exclude\n  📁 logs/\n    📄 HEAD\n    📁 refs/\n      📁 heads/\n        📄 main\n      📁 remotes/\n        📁 origin/\n          📄 HEAD\n  📁 objects/\n    📁 info/\n    📁 pack/\n      📄 pack-512e82660499a6f4fa61defdf66268b4bc10515d.idx\n      📄 pack-512e82660499a6f4fa61defdf66268b4bc10515d.pack\n  📄 packed-refs\n  📁 refs/\n    📁 heads/\n      📄 main\n    📁 remotes/\n      📁 origin/\n        📄 HEAD\n    📁 tags/\n📄 .gitignore\n📄 CITATION.cff\n📄 CODE_OF_CONDUCT.md\n📄 CONTRIBUTING.md\n📄 LICENSE\n📄 README.md\n📄 SECURITY.md",
+    "estrutura_completa": "📁 .git/\n  📄 HEAD\n  📁 branches/\n  📄 config\n  📄 description\n  📁 hooks/\n    📄 applypatch-msg.sample\n    📄 commit-msg.sample\n    📄 fsmonitor-watchman.sample\n    📄 post-update.sample\n    📄 pre-applypatch.sample\n    📄 pre-commit.sample\n    📄 pre-merge-commit.sample\n    📄 pre-push.sample\n    📄 pre-rebase.sample\n    📄 pre-receive.sample\n    📄 prepare-commit-msg.sample\n    📄 push-to-checkout.sample\n    📄 update.sample\n  📄 index\n  📁 info/\n    📄 exclude\n  📁 logs/\n    📄 HEAD\n    📁 refs/\n      📁 heads/\n        📄 main\n      📁 remotes/\n        📁 origin/\n          📄 HEAD\n  📁 objects/\n    📁 info/\n    📁 pack/\n      📄 pack-512e82660499a6f4fa61defdf66268b4bc10515d.idx\n      📄 pack-512e82660499a6f4fa61defdf66268b4bc10515d.pack\n  📄 packed-refs\n  📁 refs/\n    📁 heads/\n      📄 main\n    📁 remotes/\n      📁 origin/\n        📄 HEAD\n    📁 tags/\n📄 .gitignore\n📄 CITATION.cff\n📄 CODE_OF_CONDUCT.md\n📄 CONTRIBUTING.md\n📄 LICENSE\n📄 README.md\n📄 SECURITY.md\n📄 SUPPORT.md\n📁 easytool/\n  📄 README.md\n  📁 assets/\n    📄 front.png\n    📄 logo.png\n  📁 data_funcqa/\n    📁 funchub/\n      📄 math.py\n    📁 tool_instruction/\n      📄 functions_data.json\n      📄 tool_dic.jsonl\n  📄 data_process.py\n  📁 data_restbench/\n    📁 tool_instruction/\n      📄 tmdb_tool.json\n  📁 data_toolbench/\n    📁 tool_instruction/\n      📄 API_description_embeddings.zip\n      📄 toolbench_tool_instruction.json\n  📁 easytool/\n    📄 __init__.py\n    📄 funcQA.py\n    📄 restbench.py\n    📄 toolbench.py\n    📄 toolbench_retrieve.py\n    📄 util.py\n  📄 main.py\n  📄 requirements.txt\n📁 hugginggpt/\n  📄 .dockerignore\n  📄 Dockerfile.jetson\n  📄 README.md\n  📁 assets/\n    📄 intro.png\n    📄 logo.png\n    📄 overview.jpg\n    📄 prompt_flow.jpg\n    📄 screenshot_a.jpg\n    📄 screenshot_q.jpg\n  📁 server/\n    📄 awesome_chat.py\n    📁 configs/\n      📄 config.azure.yaml\n      📄 config.default.yaml\n      📄 config.gradio.yaml\n      📄 config.lite.yaml\n    📁 data/\n      📄 p0_models.jsonl\n    📁 demos/\n      📄 demo_choose_model.json\n      📄 demo_parse_task.json\n      📄 demo_response_results.json\n    📄 get_token_ids.py\n    📁 models/\n      📄 download.ps1\n      📄 download.sh\n    📄 models_server.py\n    📁 public/\n      📁 examples/\n        📄 a.jpg\n        📄 b.jpg\n        📄 c.jpg\n        📄 d.jpg\n        📄 e.jpg\n        📄 f.jpg\n        📄 g.jpg\n    📄 requirements.txt\n    📄 run_gradio_demo.py\n  📁 web/\n    📁 electron/\n      📄 .npmrc\n      📄 electron-builder.yml\n      📄 main.js\n      📄 package.json\n      📄 preload.js\n    📄 env.d.ts\n    📄 index.html\n    📄 package.json\n    📄 postcss.config.js\n    📁 public/\n      📄 audio.svg\n      📄 favicon.ico\n      📄 video.svg\n    📁 src/\n      📄 App.vue\n      📁 api/\n        📄 chatgpt.ts\n        📄 hugginggpt.ts\n      📁 assets/\n        📄 audio.svg\n        📄 chatgpt.svg\n        📄 clip.svg\n        📄 favicon.ico\n        📄 huggingface.svg\n        📄 logo.svg\n        📄 setting.svg\n        📄 switch.svg\n        📄 tailwind.css\n      📁 components/\n        📄 Loading.vue\n      📁 config/\n        📄 index.ts\n      📄 main.ts\n      📁 prompt/\n        📄 index.ts\n      📁 router/\n        📄 index.ts\n      📁 types/\n        📄 index.ts\n      📁 views/\n        📄 home.vue\n    📄 tailwind.config.js\n    📄 tsconfig.config.json\n    📄 tsconfig.json\n    📄 vite.config.ts\n📁 taskbench/\n  📄 README.md\n  📁 assets/\n    📄 backinstruct.png\n    📄 eval.png\n    📄 logo.png\n    📄 logo2.png\n  📄 batch_evaluate.sh\n  📁 data_dailylifeapis/\n    📄 alignment_ids.json\n    📄 data.json\n    📄 graph_desc.json\n    📄 tool_desc.json\n    📄 user_requests.json\n  📄 data_engine.py\n  📁 data_huggingface/\n    📄 alignment_ids.json\n    📄 data.json\n    📄 graph_desc.json\n    📄 tool_desc.json\n    📄 user_requests.json\n  📁 data_multimedia/\n    📄 alignment_ids.json\n    📄 data.json\n    📄 graph_desc.json\n    📄 tool_desc.json\n    📄 user_requests.json\n  📄 evaluate.py\n  📄 format_data.py\n  📄 generate_graph.py\n  📄 graph_sampler.py\n  📄 inference.py\n  📄 requirements.txt\n  📄 visualize_graph.py"
+  },
+  "classificacao": {
+    "rankings": [
+      {
+        "rank": 1,
+        "arquitetura": "arquitetura Pipe-and-Filter",
+        "score": 0.15514472126960754,
+        "percentual": 15.514472126960754
+      },
+      {
+        "rank": 2,
+        "arquitetura": "arquitetura multi-agente",
+        "score": 0.15325826406478882,
+        "percentual": 15.325826406478882
+      },
+      {
+        "rank": 3,
+        "arquitetura": "arquitetura de microsserviços",
+        "score": 0.14270153641700745,
+        "percentual": 14.270153641700745
+      },
+      {
+        "rank": 4,
+        "arquitetura": "arquitetura em camadas",
+        "score": 0.13430702686309814,
+        "percentual": 13.430702686309814
+      },
+      {
+        "rank": 5,
+        "arquitetura": "arquitetura MVC",
+        "score": 0.11811896413564682,
+        "percentual": 11.811896413564682
+      },
+      {
+        "rank": 6,
+        "arquitetura": "arquitetura orientada a eventos",
+        "score": 0.10644011944532394,
+        "percentual": 10.644011944532394
+      },
+      {
+        "rank": 7,
+        "arquitetura": "arquitetura orquestrador-executor",
+        "score": 0.09679260849952698,
+        "percentual": 9.679260849952698
+      },
+      {
+        "rank": 8,
+        "arquitetura": "arquitetura monolítica",
+        "score": 0.0932367742061615,
+        "percentual": 9.32367742061615
+      }
+    ],
+    "top_3": [
+      {
+        "rank": 1,
+        "arquitetura": "arquitetura Pipe-and-Filter",
+        "score": 0.15514472126960754,
+        "percentual": 15.514472126960754
+      },
+      {
+        "rank": 2,
+        "arquitetura": "arquitetura multi-agente",
+        "score": 0.15325826406478882,
+        "percentual": 15.325826406478882
+      },
+      {
+        "rank": 3,
+        "arquitetura": "arquitetura de microsserviços",
+        "score": 0.14270153641700745,
+        "percentual": 14.270153641700745
+      }
+    ]
+  },
+  "arquitetura_identificada": {
+    "nome": "arquitetura Pipe-and-Filter",
+    "score": 0.15514472126960754,
+    "confianca_percentual": 15.514472126960754
+  }
+}
